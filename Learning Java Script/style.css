@@ -1,0 +1,12 @@
+body
+{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    font-family: 'Cascadia Code';
+}
+
+button
+{
+    background-color: black;
+    color: white;
+}
