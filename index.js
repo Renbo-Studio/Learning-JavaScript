@@ -18,15 +18,12 @@ let FirstName = "......!"; //strings
 let age = 9999; //numbers
 let student = false; //booleans
 
-age = age + 1;
+
 
 console.log("Hello",FirstName)
 console.log("You Are",age, "Years Old");
 console.log("In School:", student);
 
-document.getElementById("p1").innerHTML = "HELLO " + FirstName;
-document.getElementById("p2").innerHTML = "You Are " + age + " Years Old";
-document.getElementById("p3").innerHTML = "Project Finished: " + student;
 
 //ARITHMETIC EXPRESSION
 let students = 20;
@@ -55,12 +52,25 @@ let username
 document.getElementById("button").onclick = function()
 {
     username = document.getElementById("myText").value;
+    age = document.getElementById("age").value;
+
+    if(age == ""){return}
     console.log(username)
     document.getElementById("p1").innerHTML = "HELLO " + username;
-
-    age = document.getElementById("age").value;
-    console.log(age)
-    document.getElementById("p2").innerHTML = "You Are " + age + " Years Old";
+    
+    if(age <= 18)
+        {
+            document.getElementById("p2").innerHTML = "You Are Still A KID...( •_•)>⌐■-■";
+        }
+        else
+        {
+            document.getElementById("p2").innerHTML = "Greatings Ooh Wise One....( ﾉ ﾟｰﾟ)ﾉ";
+        }
+    
+        if(document.getElementById("mebutton").checked)
+        {
+            document.getElementById("mybutton").innerHTML = "LOL I Can't Remember (¬‿¬)";
+        } 
 }
 
 //NUMBER_CONVERTIONS
@@ -79,16 +89,80 @@ document.getElementById("schbutton").onclick = function()
 }
 
 //CONST
-let pi = 3.14159
-let radius
-let circumference
+const pi = 3.14159;
+let radius;
+let circumference;
 
 document.getElementById("radiusbutton").onclick = function()
 {
-    radius = window.prompt("Enter The Radius Of A Circle")
-    radius = Number(radius)
+    radius = window.prompt("Enter The Radius Of A Circle");
+    radius = Number(radius);
+
+    circumference = 2 * pi * radius;
+
+    document.getElementById("radiusbutton").innerHTML = "The Circumference Is: " + circumference;
+    
 }
 
-circumference = 2 * pi * radius
+//MATH HYPOTENUSE
+let a;
+let b;
+let c;
 
-console.log("The Circumference Is: ", circumference)
+document.getElementById("hypobutton").onclick = function()
+{
+    a = window.prompt("Enter Side A");
+    a = Number(a);
+
+    b = window.prompt("Enter Side B");
+    b = Number(b);
+
+    c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+    document.getElementById("hypobutton").innerHTML = "Side C: " + c;
+
+    console.log("Side C: ", c)
+}
+
+//ROLL A DICE
+let dice = Math.floor(Math.random() * 6) + 1;
+
+document.getElementById("rollbutton").onclick = function()
+{
+    document.getElementById("rollbutton").innerHTML = "You Got: " + dice;
+}
+
+//MAKING AN AI
+let currentMessage = ""
+let oldMessage = ""
+let currentAI = ""
+let oldAI = ""
+
+let player2 = document.getElementById("player2")
+let player1 = document.getElementById("player1")
+let playerinput = document.getElementById("playerinput")
+
+let bot2 = document.getElementById("bot2")
+let bot1 = document.getElementById("bot1")
+
+
+
+document.getElementById("playerbutton").onclick = function()
+{
+    
+
+
+
+
+
+    oldMessage = player2.innerHTML;
+    oldAI = bot2.innerHTML;
+    player1.innerHTML = oldMessage;
+    bot1.innerHTML = oldAI;
+    currentMessage = playerinput.value;
+    oldMessage = player1.value;
+    oldAI = bot1.value;
+    player2.innerHTML = currentMessage;
+    bot2.innerHTML = currentAI;
+    playerinput.value = "";
+}
