@@ -9,29 +9,51 @@
 </head>
 
 <body>
+    <div class="lol">
+        <label id="time">Fetching Time...!</label>
+    </div>
+    <div class="xlol">
+        <input type="checkbox" id="niteMode"><label for="niteMode" id="LDmode">Dark Mode👀😎</label>
+    </div>
+    <img src="" alt="">
     
-    <div class="grid-continer center">
-        <div id="namelebel" class="grid-item">
-            <label for="">Enter Your Name: </label><br>
-            <input type="text" id="myText"><br><br>
-        </div>
-    
-        <div id="agelebel" class="grid-item">
-            <label for="">How Old Are You: </label><br>
-            <input type="number" id="age"><br><br>
-            <label for="mebutton" id="mybutton">Remember Me</label>
-            <input type="checkbox" name="" id="mebutton">
-            <button type="button" id="button">Submit</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="center">
+                <label for="img-input" class="clickImg">Select Profile Picture</label>
+                <input type="file" accept="image/png, image/jpeg, image/jpg" id="img-input">
+                <div id="profilePic"></div>
+
+                <div class="grid-continer center down">
+                    <div id="namelebel" class="grid-item">
+                        <label for="">Enter Your Name: </label><br>
+                        <input type="text" id="myText"><br><br>
+                    </div>
+                
+                    <div id="agelebel" class="grid-item">
+                        <label for="">How Old Are You: </label><br>
+                        <input type="number" id="age"><br><br>
+                        <label for="mebutton" id="mybutton">Remember Me</label>
+                        <input type="checkbox" name="" id="mebutton">
+                        <button type="button" id="button">Submit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div>
+    <div class="down">
+        <label for="img-input2" class="clickImg">Select Profile Picture</label>
+        <input type="file" accept="image/png, image/jpeg, image/jpg" id="img-input2">
+        <div id="profilePic2"></div>
+        <img src="" id="profilePic2" alt="">
         <h2 id="p1"></h2>
         <p id="p2"></p><br>
         <p id="p3"></p>
     </div>
 
-    <div>
+    <div class="hidden">
         <button id="schbutton">PROJECTS</button>
         <button id="radiusbutton">RADIUS</button>
         <button id="hypobutton">HYPOTENUSE CALC</button>
@@ -40,18 +62,21 @@
 
     <div>
         <div class="bot">
-            <label for="" id="bot1">hello am an AI named John</label>
+            <label for="" id="bot1"></label>
         </div><br>
         <div class="player">
-            <label for="" id="player1">cool</label>
+            <label for="" id="player1"></label>
         </div><br>
         <div class="bot">
-            <label for="" id="bot2">i know right</label>
+            <label for="" id="bot2"></label>
         </div><br>
         <div class="player">
-            <label for="" id="player2"> weird</label>
+            <label for="" id="player2"></label>
         </div><br>
-        <div class="center">
+        <div class="bot">
+            <label for="" id="botR"></label>
+        </div><br>
+        <div class="chatbox">
             <input type="text" id="playerinput"><button id="playerbutton">SEND</button>
         </div>
     </div>
