@@ -348,7 +348,8 @@ function reply()
             var input = window.prompt("input an image url");
             localStorage.setItem("Background", input);
             var result = localStorage.getItem("Background");
-            $('body').css({ 'background-image': "url(" + result + ")" });
+            let xresult = "'"+ result +"'"
+            $('body').css({ 'background-image': "url(" + xresult + ")" });
             currentAI = "BackGround Changed. try replys to check your created replys"
             break;
         case "hi":
