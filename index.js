@@ -242,14 +242,21 @@ let perAI = ""
 let createdQuestion = []
 let createdAnwser = []
 
+
 let player2 = document.getElementById("player2")
 let player1 = document.getElementById("player1")
 let playerinput = document.getElementById("playerinput")
+
+createdQuestion.push(JSON.parse(localStorage.getItem("createdQuestion")));
+createdAnwser.push(JSON.parse(localStorage.getItem("createdAnswer")));
 
 let bot2 = document.getElementById("bot2")
 let bot1 = document.getElementById("bot1")
 let botr = document.getElementById("botR")
 
+
+
+console.log(createdQuestion)
 
 document.getElementById("playerbutton").onclick = function()
 {
@@ -267,6 +274,7 @@ function enter(event)
 
 function AI()
 {
+
     oldMessage = player2.textContent;
     oldAI = bot2.textContent;
     player1.textContent = oldMessage;
@@ -309,18 +317,21 @@ function reply()
     switch(currentMessagec)
     {
         case "hi":
+        case "hello":
             currentAI = "Hello"
             break;
         case "what is my name":
             currentAI = username + " I dont forget my freinds name expect if you clear my memory"
             break;
         case "clear data":
+        case "clear":
             currentAI = "Data Successfully cleared"
             localStorage.clear()
             break
-        case "how are you":
+        case "how are you" :
+        case "how are you doing":
             currentAI = `Am good... you're just ${age}, years old.. so sad`
-            break
+            break;
         case "cool":
             currentAI = "That's my middle name (*￣︶￣*)"
             break;
@@ -328,23 +339,33 @@ function reply()
             currentAI = "I don't remember what you did to me buh i forgive you......     ( ´･･)ﾉ(._.`)"
             break;
         case "bot":
+        case "robot":
+        case "ai":
             currentAI = "It hurts my feelings calling me a bot. ╯︿╰"
             break;
         case "i love you":
+        case "i like you":
             currentAI = "AWWW... thats so cute buh robots don't have emotions. (´。＿。｀)"
             break;
         case "reply":
-            createdQuestion.push(window.prompt("What You Want To Ask...?").trim().toLowerCase())
-            createdAnwser.push(window.prompt("What Should I Reply...?"))     
+            let CXQ = window.prompt("What You Want To Ask...?").trim().toLowerCase();
+            let CAQ = window.prompt("What Should I Reply...?").trim();
+            createdQuestion.push(CXQ);
+            createdAnwser.push(CAQ);
+            
+            localStorage.setItem("createdQuestion", JSON.stringify(createdQuestion.every()));
+            localStorage.setItem("createdAnswer", JSON.stringify(createdAnwser.every()));
             
             currentAI = "SAVED.. try it out..? You Now Have " + createdQuestion.length + " Created Reply(s)"
             break
         case "light mode":
+        case "lightmode":
             lightMode()
 
             currentAI = "Light Mode activatied you can also try dark mode... (‾◡◝)"
             break
         case "dark mode":
+        case "darkmode":
             darkMode()
 
             currentAI = "Dark Mode activatied you can also try light mode... (‾◡◝)"
@@ -358,10 +379,11 @@ function reply()
             else
             {
                 window.alert(replys)
-            currentAI = "Here are your replys....! " + replys
+                currentAI = "Here are your replys....! " + replys
             } 
             break
         case "games":
+        case "game":
             currentAI = "I love games to..... ヾ(^▽^*))).. use stop game to stop game..!"
             myBox.style.width = "50px"
             myBox.style.height = "50px"
@@ -373,10 +395,11 @@ function reply()
             window.addEventListener("keydown", game1)
             break
         case "stop game":
+        case "stop":
             myBox.style.display = "none"
 
             currentAI = "Game stopped try other features...!"
-            break
+            break; break;
         default:
             currentAI = username + " I dont think i understand wat you just said (#｀-_ゝ-)... you can tell me by inputing reply"
     }
@@ -478,6 +501,11 @@ function game1(event)
             x-=5
             myBox.style.left = x + "px"
             break
+        case "Backspace":
+            myBox.style.display = "none"
+
+            currentAI = "Game stopped try other features...!"
+            playerinput.value = ""
         default:
             break
     }
