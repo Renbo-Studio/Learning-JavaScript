@@ -173,6 +173,7 @@ function startUp()
         setTimeout(() => bot2.textContent = "Joshua, his a very cool guy.", 5000)
         setTimeout(() => player2.textContent = "WOOW", 7000)
         setTimeout(() => botr.textContent = "SO, what will you like to ask me...?", 8000)
+        setTimeout(() => {document.getElementById("body").style.backgroundimage = img}, 3000);
 }
 
 //NUMBER_CONVERTIONS
