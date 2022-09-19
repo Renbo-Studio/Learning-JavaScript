@@ -90,7 +90,7 @@ imgInput.addEventListener("change", function(e)
 
             profilePic.appendChild(img);
     
-            localStorage.setItem("profilePic", img)
+            localStorage.setItem("profilePic", img.url())
         }
 
         reader.readAsDataURL(file);
@@ -337,6 +337,10 @@ function check()
     }
 }
 const myBox = document.createElement("div")
+
+var result = localStorage.getItem("Background");
+let xresult = '\''+ result +'\''
+document.getElementById("body").style.background = "url(" + xresult + ")"
 
 function reply()
 {
