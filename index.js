@@ -120,7 +120,7 @@ imgInput2.addEventListener("change", function(e)
 
             profilePic2.appendChild(img);
     
-            localStorage.setItem("profilePic", img.url()
+            localStorage.setItem("profilePic", img.url())
             
         }
 
