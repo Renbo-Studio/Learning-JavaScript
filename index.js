@@ -54,7 +54,7 @@ let age
 
 username = localStorage.getItem("username")
 age = localStorage.getItem("age")
-img = localStorage.getItem("profilePic")
+pimg = localStorage.getItem("profilePic")
 
 
 if(username !== null)
@@ -120,7 +120,7 @@ imgInput2.addEventListener("change", function(e)
 
             profilePic2.appendChild(img);
     
-            localStorage.setItem("profilePic", img)
+            localStorage.setItem("profilePic", img.url()
             
         }
 
@@ -150,6 +150,7 @@ function startUp()
     setTimeout(() => {document.getElementById("button").style.display = "none"}, 100);
     setTimeout(() => {document.getElementById("myModal").style.display = "none"}, 3000);
     setTimeout(() => {openFullscreen()}, 3000);
+    profilePic2.appendChild(pimg)
     
 
     if(age == ""){return}
@@ -355,6 +356,10 @@ function reply()
             let xresult = '\''+ result +'\''
             document.getElementById("body").style.background = "url(" + xresult + ")"
             currentAI = "BackGround Changed. try replys to check your created replys"
+            break;
+        case "reset bg img":
+            darkmode()
+            currentAI = "reset bg img.. done"
             break;
         case "hi":
         case "hello":
