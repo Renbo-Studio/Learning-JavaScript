@@ -150,7 +150,6 @@ function startUp()
     setTimeout(() => {document.getElementById("button").style.display = "none"}, 100);
     setTimeout(() => {document.getElementById("myModal").style.display = "none"}, 3000);
     setTimeout(() => {openFullscreen()}, 3000);
-    profilePic2.appendChild(img)
     
 
     if(age == ""){return}
