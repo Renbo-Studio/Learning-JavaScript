@@ -90,7 +90,7 @@ imgInput.addEventListener("change", function(e)
 
             profilePic.appendChild(img);
     
-            localStorage.setItem("profilePic", img.url())
+            localStorage.setItem("profilePic", img)
         }
 
         reader.readAsDataURL(file);
@@ -120,7 +120,7 @@ imgInput2.addEventListener("change", function(e)
 
             profilePic2.appendChild(img);
     
-            localStorage.setItem("profilePic", img.url())
+            localStorage.setItem("profilePic", img)
             
         }
 
