@@ -345,8 +345,10 @@ function reply()
         case "background":
         case "wallpaper":
         case "background image":
-            let bg = JSON.stringify(window.prompt("input an image url"))
-            document.getElementById("body").style.backgroundimage = `url(${bg})`;
+            var input = window.prompt("input an image url");
+            localStorage.setItem("Background", input);
+            var result = localStorage.getItem("Background");
+            $('body').css({ 'background-image': "url(" + result + ")" });
             currentAI = "BackGround Changed. try replys to check your created replys"
             break;
         case "hi":
