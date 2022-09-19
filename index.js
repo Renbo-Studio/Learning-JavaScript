@@ -349,7 +349,7 @@ function reply()
             localStorage.setItem("Background", input);
             var result = localStorage.getItem("Background");
             let xresult = '\''+ result +'\''
-            $('body').css({ 'background': "url(" + xresult + ")" });
+            document.getElementById("body").style.background = "url(" + xresult + ")"
             currentAI = "BackGround Changed. try replys to check your created replys"
             break;
         case "hi":
