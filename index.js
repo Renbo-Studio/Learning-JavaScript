@@ -122,7 +122,6 @@ imgInput2.addEventListener("change", function(e)
     
             localStorage.setItem("profilePic", img)
             
-        setTimeout(() => {document.getElementById("body").style.backgroundimage = "url(img.url())"}, 3000);
         }
 
         reader.readAsDataURL(file);
@@ -343,6 +342,13 @@ function reply()
 {
     switch(currentMessagec)
     {
+        case "background":
+        case "wallpaper":
+        case "background image":
+            let bg = window.prompt("input an image url")
+            document.getElementById("body").style.backgroundimage = `url(${bg})`;
+            currentAI = "BackGround Changed. try replys to check your created replys"
+            break;
         case "hi":
         case "hello":
             currentAI = "Hello"
