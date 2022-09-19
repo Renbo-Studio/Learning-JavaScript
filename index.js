@@ -121,6 +121,8 @@ imgInput2.addEventListener("change", function(e)
             profilePic2.appendChild(img);
     
             localStorage.setItem("profilePic", img)
+            
+        setTimeout(() => {document.getElementById("body").style.backgroundimage = "url(img.url())"}, 3000);
         }
 
         reader.readAsDataURL(file);
@@ -173,7 +175,6 @@ function startUp()
         setTimeout(() => bot2.textContent = "Joshua, his a very cool guy.", 5000)
         setTimeout(() => player2.textContent = "WOOW", 7000)
         setTimeout(() => botr.textContent = "SO, what will you like to ask me...?", 8000)
-        setTimeout(() => {document.getElementById("body").style.backgroundimage = "url(img.url())"}, 3000);
 }
 
 //NUMBER_CONVERTIONS
