@@ -247,8 +247,8 @@ let player2 = document.getElementById("player2")
 let player1 = document.getElementById("player1")
 let playerinput = document.getElementById("playerinput")
 
-createdQuestion.push(JSON.parse(localStorage.getItem("createdQuestion")));
-createdAnwser.push(JSON.parse(localStorage.getItem("createdAnswer")));
+// createdQuestion.push(JSON.parse(localStorage.getItem("createdQuestion")));
+// createdAnwser.push(JSON.parse(localStorage.getItem("createdAnswer")));
 
 let bot2 = document.getElementById("bot2")
 let bot1 = document.getElementById("bot1")
@@ -353,8 +353,8 @@ function reply()
             createdQuestion.push(CXQ);
             createdAnwser.push(CAQ);
             
-            localStorage.setItem("createdQuestion", JSON.stringify(createdQuestion.every()));
-            localStorage.setItem("createdAnswer", JSON.stringify(createdAnwser.every()));
+//             localStorage.setItem("createdQuestion", JSON.stringify(createdQuestion.every()));
+//             localStorage.setItem("createdAnswer", JSON.stringify(createdAnwser.every()));
             
             currentAI = "SAVED.. try it out..? You Now Have " + createdQuestion.length + " Created Reply(s)"
             break
