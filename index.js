@@ -144,11 +144,11 @@ document.getElementById("button").onclick = function()
 
 function startUp()
 {
-    openFullscreen()
     setTimeout(() => {document.getElementById("profilePic2").append(img)}, 3000);
     setTimeout(() => {document.getElementById("myText").style.display = "none"}, 3000);
     setTimeout(() => {document.getElementById("button").style.display = "none"}, 100);
     setTimeout(() => {document.getElementById("myModal").style.display = "none"}, 3000);
+    setTimeout(() => {openFullscreen()}, 3000);
     
 
     if(age == ""){return}
