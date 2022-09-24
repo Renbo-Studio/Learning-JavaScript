@@ -504,7 +504,14 @@ function lightMode()
     inputs[2].style.borderStyle = "solid"
 }
 
+DandLmode()
+
 document.getElementById("niteMode").onclick = function()
+{
+    DandLmode();
+}
+
+function DandLmode()
 {
     LD = document.getElementById("LDmode")
     if (LD.textContent == "Light Mode🗄✨")
@@ -519,7 +526,7 @@ document.getElementById("niteMode").onclick = function()
         botr.textContent = "Light Mode activatied you can also try dark mode... (‾◡◝)"
         lightMode()
     }
-}
+};
 
 //GAMES
 let x = 0
