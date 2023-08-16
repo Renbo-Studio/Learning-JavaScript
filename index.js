@@ -1,86 +1,30 @@
-console.log("I LOVE PIZZA");
-console.log("It's REALLY GOOD!");
+let username;
+let img;
+let age;
 
-// window.alert("I REEEAALY LOVE PIZZA");
+username = localStorage.getItem("username");
+age = localStorage.getItem("age");
+img = localStorage.getItem("profilePic");
 
-//This is a comment
-/*
-    This
-    is 
-    a
-    Multiline
-    comment
-
-*/
-
-// //VERIABLES
-// let FirstName = "......!"; //strings
-//  //numbers
-// let student = false; //booleans
-
-
-
-// console.log("Hello",FirstName)
-// console.log("You Are",age, "Years Old");
-// console.log("In School:", student);
-
-
-//ARITHMETIC EXPRESSION
-// let students = 20;
-
-// students = students + 1
-// students = students - 1
-// students = students * 2
-// students = students / 2
-
-// students += 1
-// students -= 1
-// students *= 2
-// students /= 2
-
-
-// let extraStudents = students % 3;
-
-// console.log("Students are", students);
-// console.log(extraStudents, "remaining students")
-
-//USER_INPUT
-
-// let username = window.prompt("what's your name");
-let username
-let img
-let age
-
-
-username = localStorage.getItem("username")
-age = localStorage.getItem("age")
-img = localStorage.getItem("profilePic")
-
-
-if(username !== null)
-{
-    document.getElementById("myModal").style.display = "none"
-
-    startUp()
+if (username !== null) {
+    document.getElementById("myModal").style.display = "none";
+    startUp();
 }
 
 var imgInput = document.getElementById("img-input");
 var profilePic = document.getElementById("profilePic");
 
 var imgInput2 = document.getElementById("img-input2");
-var profilePic2 = document.getElementById("profilePic2");
+var profilePic2 = document.querySelectorAll(".profilePic2");
 
-imgInput.addEventListener("change", function(e)
-{
+imgInput.addEventListener("change", function(e) {
     var file = imgInput.files[0];
-    var imageType = "";
+    var imageType = /^image\//;
 
-    if(file.type.match(imageType))
-    {
+    if (file.type.match(imageType)) {
         var reader = new FileReader();
 
-        reader.onload = function(e) 
-        {
+        reader.onload = function(e) {
             profilePic.innerHTML = "";
 
             img = new Image();
@@ -89,92 +33,134 @@ imgInput.addEventListener("change", function(e)
             img.style.width = "150px";
 
             profilePic.appendChild(img);
-    
-            localStorage.setItem("profilePic", img)
-        }
+
+            localStorage.setItem("profilePic", img.src);
+        };
 
         reader.readAsDataURL(file);
-    } else
-    {
-        profilePic.innerHTML = "File Not Supported!"
+    } else {
+        profilePic.innerHTML = "File Not Supported!";
     }
 });
 
-imgInput2.addEventListener("change", function(e)
-{
+imgInput2.addEventListener("change", function(e) {
     var file = imgInput2.files[0];
-    var imageType = "";
+    var imageType = /^image\//;
 
-    if(file.type.match(imageType))
-    {
+    if (file.type.match(imageType)) {
         var reader = new FileReader();
 
-        reader.onload = function(e) 
-        {
-            profilePic2.innerHTML = "";
-
-            img = new Image();
-            img.src = reader.result;
-
-            img.style.width = "150px";
-
-            profilePic2.appendChild(img);
-    
-            localStorage.setItem("profilePic", img)
-            
-        }
+        reader.onload = function(e) {
+            profilePic2.forEach(function(profilePicItem) {
+                profilePicItem.innerHTML = "";
+                var imgClone = new Image();
+                imgClone.src = reader.result;
+                imgClone.style.width = "150px";
+                profilePicItem.appendChild(imgClone);
+            });            
+        };
 
         reader.readAsDataURL(file);
-    } else
-    {
-        profilePic.innerHTML = "File Not Supported!"
+    } else {
+        profilePic.innerHTML = "File Not Supported!";
     }
 });
 
-document.getElementById("button").onclick = function()
-{
+document.getElementById("button").onclick = function() {
     username = document.getElementById("myText").value;
     age = document.getElementById("age").value;
 
-    startUp()
-    
-    localStorage.setItem("age", age)
-    localStorage.setItem("username", username)
-                
-}
+    startUp();
 
-function startUp()
-{
-    setTimeout(() => {document.getElementById("profilePic2").append(img)}, 3000);
-    setTimeout(() => {document.getElementById("myText").style.display = "none"}, 3000);
-    setTimeout(() => {document.getElementById("button").style.display = "none"}, 100);
-    setTimeout(() => {document.getElementById("myModal").style.display = "none"}, 3000);
-    setTimeout(() => {openFullscreen()}, 3000);
-    
+    localStorage.setItem("age", age);
+    localStorage.setItem("username", username);
+};
 
-    if(age == ""){return}
-    console.log(username)
+function startUp() {
+    setTimeout(() => {
+        var imgInput2 = document.getElementById("img-input2"); // Define imgInput2 here if not already defined
+        
+        if (imgInput2) {
+            document.querySelectorAll(".profilePic2").forEach(function(profilePic) {
+                profilePic.innerHTML = "";
+    
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var imgClone = new Image();
+                    imgClone.src = reader.result;
+                    imgClone.style.width = "150px";
+                    profilePic.appendChild(imgClone);
+                };
+    
+                var file = imgInput2.files[0];
+                var imageType = /^image\//;
+    
+                if (file && file.type.match(imageType)) {
+                    reader.readAsDataURL(file);
+                } else {
+                    profilePic.innerHTML = "File Not Supported!";
+                }
+            });
+        }
+    }, 3000);
+        
+    setTimeout(() => {
+        document.getElementById("myText").style.display = "none";
+    }, 3000);
+    setTimeout(() => {
+        document.getElementById("button").style.display = "none";
+    }, 100);
+    setTimeout(() => {
+        document.getElementById("myModal").style.display = "none";
+    }, 3000);
+
+    if (age === "") {
+        return;
+    }
+    console.log(username);
     document.getElementById("p1").textContent = "HELLO " + username;
-    
-    if(age <= 18)
-        {
-            document.getElementById("p2").textContent = "You Are Still A KID (⊙ˍ⊙)";
-        }
-        else
-        {
-            document.getElementById("p2").textContent = "Greatings Ooh Wise One.... (ﾉ ﾟｰﾟ)ﾉ";
-        }
-    
-        if(document.getElementById("mebutton").checked)
-        {
-            document.getElementById("mybutton").textContent = "LOL I Can't Remember (¬‿¬)";
-        }
-        setTimeout(() => bot1.textContent = "Hello, am an AI named BOB", 1000)
-        setTimeout(() => player1.textContent = "Cool, who made you", 3000)
-        setTimeout(() => bot2.textContent = "Joshua, his a very cool guy.", 5000)
-        setTimeout(() => player2.textContent = "WOOW", 7000)
-        setTimeout(() => botr.textContent = "SO, what will you like to ask me...?", 8000)
+
+    if (age <= 18) {
+        document.getElementById("p2").textContent = "You Are Still A KID (⊙ˍ⊙)";
+    } else {
+        document.getElementById("p2").textContent = "Greetings Oh Wise One.... (ﾉ ﾟｰﾟ)ﾉ";
+    }
+
+    if (document.getElementById("mebutton").checked) {
+        document.getElementById("mybutton").textContent = "LOL I Can't Remember (¬‿¬)";
+    }
+    setTimeout(() => {
+        bot1.textContent = "Hello, I am an AI named BOB";
+    }, 1000);
+    setTimeout(() => {
+        player1.textContent = "Cool, who made you";
+    }, 3000);
+    setTimeout(() => {
+        bot2.textContent = "Joshua, he's a very cool guy.";
+    }, 5000);
+    setTimeout(() => {
+        player2.textContent = "WOW";
+    }, 7000);
+    setTimeout(() => {
+        botr.textContent = "So, what would you like to ask me...?";
+    }, 8000);
 }
+
+
+function openFullscreen() {
+    var elem = document.documentElement;
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+    }
+}
+
 
 //NUMBER_CONVERTIONS
 document.getElementById("schbutton").onclick = function()
@@ -326,12 +312,18 @@ function reply()
         case "background":
         case "wallpaper":
         case "background image":
-            var input = window.prompt("input an image url");
+            // When changing the background
+            var input = window.prompt("Input an image URL");
             localStorage.setItem("Background", input);
             var result = localStorage.getItem("Background");
-            let xresult = '\''+ result +'\''
-            document.getElementById("body").style.background = "url(" + xresult + ")"
-            currentAI = "BackGround Changed. try replys to check your created replys"
+
+            // Update the background container
+            var backgroundContainer = document.getElementById("background-container");
+            backgroundContainer.style.backgroundImage = "url('" + result + "')";
+            darkModeMode();
+
+            currentAI = "Background changed. Try 'replys' to check your created replies.";
+
             break;
         case "reset bg img":
             darkmode()
@@ -438,7 +430,6 @@ function update()
 
     function formateTime(date)
     {
-        openFullscreen()
         let hours = date.getHours()
         let minutes = date.getMinutes()
         let seconds = date.getSeconds()
