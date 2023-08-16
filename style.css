@@ -134,6 +134,7 @@ button
 .clickImg
 {
     color: green;
+    aspect-ratio: 2/2;
 }
 
 .clickImg:hover
